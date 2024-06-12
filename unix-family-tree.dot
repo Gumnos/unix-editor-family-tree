@@ -1,0 +1,151 @@
+digraph familytree {
+/*
+Sources:
+ http://www.guckes.net/vi/clones.php
+ https://en.wikipedia.org/wiki/Elvis_(text_editor)
+ https://en.wikipedia.org/wiki/Sed
+ https://en.wikipedia.org/wiki/Stevie_(text_editor)
+ https://moolenaar.net/interv_czech_en.html
+ https://web.mit.edu/kolya/misc/txt/editors
+
+edge style:
+bold: source code heritage
+dashed line: inspired by
+dotted: unknown
+*/
+
+ct[label="Colossal Typewriter\nby John McCarthy & Roland Silver\nfor the PDP-1"];
+pt[label="Photon typesetter\nby Michael Barnett & Kalon Kelly\nfor IBM 704"];
+et[label="Expensive Typewriter\nby Steve Piner\nfor PDP-1"];
+eti[label="Expensive Typewriter, improved\nby Peter Deutsch\nfor PDP-1"];
+qed[label="QED\nby Deutsch & Butler Lampson\nfor Berkley SDS-940"];
+qed_cacm[label="QED\nas published in CACM"];
+qed_ctss[label="QED\nby Ken Thompson\nfor CTSS"];
+qed_multics[label="QED\nby Ken Thompson\nfor Multics"];
+qed_gcos[label="QED\nby Dennis Ritchie\nfor GCOS"];
+qedx[label="qedx\nfor Multics"];
+quids[label="QUIDS\nby George Coulouris\net al."];
+ed[label="ed\nby Ken Thompson\nfor PDP-7 Unix"];
+ed_unix[label="ed\nby Ken Thompson\nfor Unix (various version)"];
+ed_v6[label="ed\nby Ken Thompson\nfor Unix v6"];
+em[label="em\ned with additions\nfrom George Coulouris"];
+em_other[label="em\nother variants"];
+ex[label="ex (vi)\nby Bill Joy & Charles Haley"];
+ex2[label="ex (v2)\ned with additions by Bill Joy"];
+exvi[label="ex/vi (v3)\nextended by Mark Horton"];
+stevie[label="Stevie\ntim Thompson"];
+bbstevie[label="BBStevie\nby Roy Silvernail"];
+calvin[label="calvin\nby Paul Vojta"];
+elvis[label="Elvis\nby Steve Kirkendall"];
+jelvis[label="jelvis\nby Jun-ichiro itojun Hagino"];
+helvis[label="helvis\nby Park Chong-Dae"];
+vim[label="vim\nby Bram Moolenaar"];
+sed[label="sed\nby Lee McMahon"];
+grep[label="grep\nby Lee McMahon"];
+nvi;
+xvi[label="xvi\nby B. Sartirana"];
+vigor[label="vigor\nJoel Holveck"];
+vile[label="vile\nby Paul Fox"];
+
+gnu_ed[label="GNU ed"];
+
+ce[label="CREATE/EDIT\nfor CTSS"];
+edits[label="EDITS\nby Arthur Samuel\nfor CTSS"];
+memo[label="MEMO/MODIFY\nby Leslie Lowry\nfor CTSS"];
+typeset[label="TYPESET\nby Jerry Saltzer\nfor CTSS"];
+pdp79[label="PDP-7/9 editor"];
+vedit[label="VEDIT\nby Victor Yngve\nfor CTSS"]
+
+teco[label="TECO\nby Dan Murphy\nfor PDP-1"]
+teco6[label="PDP-6 TECO\nby Greenblatt, Holloway, & Nelson"];
+teco_dec[label="DEC TECO"]
+teco_its[label="ITS TECO"]
+lined[label="LINED\nfor PDP-6"];
+
+stopgap[label="STOPGAP\nby Bill Weiher\nfor PDP-10"];
+sos[label="SOS\nby Steve Savitzky\nfor PDP-10"];
+
+ed_ctss[label="ED (and EDL, EDA, EDB)\nfor CTSS"];
+edit[label="edit\nby Charles Garman\nfor Multics"]
+edm[label="edm\nfor Multics"];
+
+emacs[label="EMACS in TECO\nby RMS et al."];
+micro_emacs[label="Micro Emacs"];
+emacs_multics[label="Multics EMACS\nby Bernard Greenberg"];
+emacs_gnu[label="GNU Emacs"];
+
+viper[label="viper\nvi mode for Emacs"];
+spacemacs[label="spacemacs\nvi+Emacs"];
+
+ct->et[style=dotted; label="?"];
+et->eti;
+et->qed;
+qed->qed_cacm;
+qed->qed_ctss;
+qed_ctss->qed_multics;
+qed_multics->qed_gcos;
+qed_multics->qedx;
+qed_cacm->quids;
+qed_gcos->ed;
+ed->ed_unix;
+ed_unix->ed_v6;
+quids->em;
+ed_v6->em;
+ed_v6->grep;
+ed_v6->sed;
+grep->sed;
+em->em_other;
+em->ex;
+ex->ex2;
+ex2->exvi
+ed_unix->gnu_ed[style="dashed"];
+
+exvi->stevie[style="dashed"];
+exvi->elvis[style="dashed"];
+exvi->vim[style="dashed"];
+exvi->nvi[style="dashed"];
+exvi->calvin[style="dashed"];
+stevie->vim;
+stevie->bbstevie;
+stevie->xvi;
+elvis->jelvis;
+elvis->helvis;
+nvi->vigor;
+exvi->vile[style="dashed"];
+micro_emacs->vile;
+exvi->viper[style="dashed"];
+exvi->spacemacs[style="dashed"];
+
+ce->edits;
+ce->memo
+ct->typeset;
+ce->typeset;
+edits->typeset;
+memo->typeset;
+pt->typeset
+vedit->typeset;
+typeset->pdp79;
+
+teco->teco6;
+teco6->teco_dec;
+teco6->teco_its;
+edits->lined[style="dotted"; label="?"];
+
+lined->stopgap;
+teco6->stopgap[style="dotted"; label="?"];
+stopgap->sos;
+sos->ex[style="dotted"; label="?"];
+
+typeset->ed_ctss;
+ed_ctss->edit;
+edit->edm;
+
+teco_its->emacs;
+emacs->emacs_multics;
+emacs_multics->emacs_gnu;
+emacs->emacs_gnu;
+emacs->micro_emacs[style="dashed"];
+emacs->viper[style="dashed"];
+emacs->spacemacs[style="dashed"];
+
+}
